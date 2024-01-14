@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from data import get_vocab, get_random_sequence, split_sequence
+from data import get_vocab, get_next_sequence, split_sequence
 from utils import one_hot_sequence, index_sequence_batch
 from tqdm import tqdm
 from text_gru import TextGRU
@@ -24,9 +24,10 @@ criterion = nn.CrossEntropyLoss()
 adam = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 for epoch in range(epochs):
+	print('Epoch:', epoch)
 	avg_loss = 0
 	for _ in tqdm(range(iterations)):
-		sequences = [get_random_sequence(sequence_length+1) for _ in range(batch_size)]
+		sequences = [get_next_sequence(sequence_length+1) for _ in range(batch_size)]
 		inputs, target = [], ''
 
 		for seq in sequences:
