@@ -19,9 +19,15 @@ original model, set n_features=64.
 4. I renamed the function in the UNet class to sinusodial_embedding because I thought it made more sense since
 that is the name of the technique we use to embed the current timestep into the unet.
 
+5. There is an additional generate.py file that will generate images using a trained version of the unet.
+
 6. I changed the batch_size to 4 from 12 because I didn't have enough VRAM for a batch_size of 12.
 
-5. There is an additional generate.py file that will generate images using a trained version of the unet.
+7. Finally, and probably the most important change of all, is I changed the model architecture almost entirely.
+But I did not throw away the original model, it's still included within the repo along with the changes I made to
+it(2). However, the train.py by default uses the AttU_Net that is defined in network.py. I did this change because
+I wanted to experiment with a different model architecture and because this one uses soft attention as opposed to
+self attention. It also runs much faster than the original model but has a much harder time converging.
 
 As the code base is licensed under the apache version 2.0 january 2004 license
 I am obligated to give credit to the author of the original code by placing

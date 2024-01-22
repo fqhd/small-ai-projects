@@ -1,7 +1,7 @@
 import torch
 import torch.utils.data as dutils
 from dataset import PlanetDataset
-from unet import UNet
+from network import AttU_Net
 from tqdm import tqdm
 from diffusion_tools import *
 
@@ -10,7 +10,7 @@ dataloader = dutils.DataLoader(dataset, batch_size=4, shuffle=True)
 
 device = 'cuda'
 
-model = UNet().to(device)
+model = AttU_Net().to(device)
 num_params = 0
 for param in model.parameters():
 	num_params += param.numel()
@@ -37,7 +37,7 @@ def train():
 	return average_loss
 
 losses = []
-for epoch in range(20):
+for epoch in range(200):
 	loss = train()
 	losses.append(loss)
 	print(f'Epoch {epoch}) Loss: {loss}')

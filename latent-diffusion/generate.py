@@ -1,10 +1,10 @@
 import torch
-from unet import UNet
+from network import AttU_Net
 from diffusion_tools import sample_images
 import matplotlib.pyplot as plt
 import torchvision.transforms as T
 
-model = UNet()
+model = AttU_Net()
 model = model.to('cuda')
 model.load_state_dict(torch.load('model.pth'))
 
