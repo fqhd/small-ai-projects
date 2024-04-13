@@ -1,11 +1,11 @@
 import torch
 from utils import index_sequence_batch
 from data import get_vocab
-from text_gru import TextGRU
+from text_model import TextModel
 import random
 from constants import *
 
-model = TextGRU()
+model = TextModel()
 model.load_state_dict(torch.load('model.pth'))
 model.eval()
 

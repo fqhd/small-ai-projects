@@ -3,7 +3,7 @@ from torch import nn
 from data import get_vocab
 from constants import *
 
-class TextGRU(nn.Module):
+class TextModel(nn.Module):
 	def __init__(self):
 		super().__init__()
 		vocab_size = len(get_vocab())
@@ -24,7 +24,7 @@ class TextGRU(nn.Module):
 		return logits
 	
 if __name__ == '__main__':
-	network = TextGRU()
+	network = TextModel()
 	x = torch.tensor([[2, 1, 4, 22, 11, 18, 6, 7, 9, 10]])
 
 	logits = network(x, 'cpu')

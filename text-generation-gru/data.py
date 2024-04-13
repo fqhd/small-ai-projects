@@ -1,7 +1,7 @@
 import random
 from unidecode import unidecode
 
-with open('data/bbt.txt', encoding='utf-8') as f:
+with open('data/text.txt', encoding='utf-8') as f:
 	text = unidecode(f.read())
 
 def get_vocab():
